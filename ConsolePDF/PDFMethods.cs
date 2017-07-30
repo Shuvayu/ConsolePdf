@@ -33,7 +33,7 @@ namespace ConsolePDF
         /// <summary>
         /// Imports all pages from a list of documents.
         /// </summary>
-        static void MergePdfs()
+        internal static void MergePdfs()
         {
             // Get some file names
             string[] files = GetFiles();
@@ -66,9 +66,9 @@ namespace ConsolePDF
         }
 
         /// <summary>
-        /// WIP
+        /// Rotate the pdf pages by 180 degrees
         /// </summary>
-        static void RotatePdf()
+        internal static void RotatePdf()
         {
             // Get some file names
             string[] files = GetFiles();
@@ -88,16 +88,20 @@ namespace ConsolePDF
                 {
                     // Get the page from the external document...
                     PdfPage page = inputDocument.Pages[idx];
+
+                    // Rotate the page by 180 degress.
+                    page.Rotate = 180;
+
                     // ...and add it to the output document.
                     outputDocument.AddPage(page);
                 }
+
+                // Save the document...
+                //string filename = $"{file}";
+                outputDocument.Save(file);
             }
 
-            // Save the document...
-            string filename = "RotatedDocument.pdf";
-            outputDocument.Save(filename);
-            // ...and start a viewer.
-            Process.Start(filename);
+           
         }
     }
 }
