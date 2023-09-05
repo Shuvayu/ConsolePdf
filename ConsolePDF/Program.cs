@@ -1,9 +1,4 @@
-﻿using PdfSharp.Pdf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace ConsolePDF
 {
@@ -14,6 +9,7 @@ namespace ConsolePDF
             Console.WriteLine("Please seletc which option you want to proceed with ...");
             Console.WriteLine("[R]otate a pdf");
             Console.WriteLine("[M]erge pdfs");
+            Console.WriteLine("[C]ompress pdfs");
             char option = char.ToLower(Console.ReadKey().KeyChar);
 
             switch (option)
@@ -23,6 +19,9 @@ namespace ConsolePDF
                     break;
                 case 'm':
                     PDFMethods.MergePdfs();
+                    break;
+                case 'c':
+                    PDFMethods.CompressPdf();
                     break;
                 default:
                     Console.WriteLine("Next time select a valid option ...");
